@@ -7,32 +7,67 @@
 - Shubham Gawande
 
 ## Short Project Description
-This project focuses on utilizing Mixture-of-Gaussians (MoG) models to enable a robot to recognize and classify objects for adaptive grasping. Object recognition plays a critical role in robotic manipulation, particularly in scenarios involving diverse objects with varying shapes, sizes, and materials. The MoG model will be applied to cluster objects based on sensor data (visual or tactile), enabling the robot to determine the most appropriate grasp strategy for each object type.
+This project aims to utilize Mixture-of-Gaussians (MoG) models for object recognition in robotic grasping tasks. The process begins by gathering object data in the form of .obj files (vertex, texture, and face information). A systematic pipeline processes the data to extract meaningful features, identify basic geometric shapes, classify object categories, and apply the MoG model for further refinement.
 
-## Learning Techniques
-The project will use the Mixture-of-Gaussians (MoG) approach combined with Expectation-Maximization (EM) for clustering object types. Sensor data (e.g., RGB-D images or tactile readings) will be used for feature extraction, which is essential for identifying characteristics such as shape, texture, and material properties. The MoG model will be trained to segment objects into distinct categories, aiding in classification and decision-making for grasping.
+By combining advanced clustering techniques with Expectation-Maximization (EM), this approach seeks to classify objects into fundamental categories such as cubes, cylinders, spheres, and cuboids. The robot will use this classification to adapt its grasping strategies for diverse object types.
+
+## Workflow
+
+### Step I: Data Collection
+
+Use .obj files as input, containing vertices, vertex textures, and faces (e.g., [v, vt, f]).
+
+### Step II: Pre-processing
+
+Employ Open3D to:
+- Extract bounding edges.
+- Remove surface overlaps.
+- Simplify object representations for efficient processing.
+
+### Step III: Object Identification
+
+Determine if a valid object exists within the dataset. Perform basic geometry checks to assess object completeness and structure.
+
+### Step IV: Feature Extraction
+
+Extract critical object features such as dimensions, curvature, and symmetry. Use these features to describe the object concisely for classification purposes.
+
+### Step V: Category Classification
+Classify objects into one of four predefined categories:
+    1.	Cube
+    2.	Cuboid
+    3.	Cylinder
+    4.	Sphere
+
+### Step VI: Mixture-of-Gaussians (MoG) Application
+Apply the MoG model for clustering based on object features. Use EM for optimizing the Gaussian parameters, ensuring high accuracy in category refinement.
+
+### Step VII: Output Generation
+Generate results in two forms:
+    1. Image representations of the classified objects.
+    2. Textual descriptions of the objects’ basic geometry.
+
+### Step VIII: Validation
+
+- Validate the classifications using predefined benchmarks and test objects.
 
 ## Learning Data
-The dataset requirements for this project include:
-1. **Diverse Object Types**: A collection of objects that vary in shape, size, texture, and material. These should represent real-world items the robot may encounter.
-2. **Visual Features**: RGB-D images or 3D point clouds to capture geometric and color-based object characteristics.
-3. **Tactile Features** (if available): Data from tactile or force/torque sensors to provide information on surface properties, stiffness, and material.
-4. **Labeled Data**: Each object must be annotated with a category or class label to train the MoG model for clustering.
-
-Initial datasets such as **ShapeNet** (for 3D object models) and **Google’s Object Dataset** (for annotated images) will be used. Additional dataset augmentation may be performed to improve model robustness and account for variability in object properties.
+The dataset requirements include:
+1.	Input Data: .obj files from sources such as ShapeNet.
+2.	Pre-processed Features: Extracted object features like size and shape parameters.
+3.	Labeled Data: Categories for cubes, cuboids, cylinders, and spheres, to train the model.
 
 ## Expected Project Outcomes
-1. A Mixture-of-Gaussians model capable of clustering objects into meaningful categories based on sensor data.
-2. A system that integrates object recognition with grasping strategies, enabling adaptive manipulation of objects.
-3. A comprehensive library of clustered object data and corresponding grasping strategies, demonstrating the model’s ability to generalize to new objects.
-
+1.	A pipeline for preprocessing and classifying .obj files into basic geometric categories.
+2.	A trained Mixture-of-Gaussians model capable of clustering objects based on extracted features.
+3.	Integration of classification outputs with robotic grasping strategies for adaptive object manipulation.
 ## Evaluation Plan
-The success of the project will be measured by:
-1. **Classification Accuracy**: How effectively the MoG model clusters objects into correct categories.
-2. **Grasp Success Rate**: The percentage of successful grasps across diverse object types, demonstrating the robot’s ability to adapt its grasping strategy based on object classification.
-3. **Generalization**: The model’s performance on unseen objects, reflecting its robustness and adaptability.
+The project’s success will be evaluated based on:
+1.	Pipeline Accuracy: Precision of shape classification (cube, cylinder, etc.).
+2.	Grasp Success Rate: Percentage of successful grasps based on classification output.
+3.	System Generalization: Ability to handle unseen objects and maintain high classification accuracy.
 
 ## References
-1. **ShapeNet Dataset**: A large-scale repository of 3D models categorized by type.
-2. **Google’s Object Dataset**: Provides annotated images across a wide range of object classes.
-3. Research literature on Mixture-of-Gaussians and Expectation-Maximization for clustering in robotic object recognition tasks.
+1.	Open3D: For pre-processing object geometry and feature extraction.
+2.	ShapeNet Dataset: Repository of 3D object models.
+3.	Mixture-of-Gaussians and EM Algorithms: Techniques for unsupervised clustering and parameter optimization.
