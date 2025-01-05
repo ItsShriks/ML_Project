@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load mesh
-mesh = trimesh.load_mesh('plastic_water_bottle.obj')
+mesh = trimesh.load_mesh('source-plastic_water_bottle/plastic_water_bottle.obj')
 
 for name, mesh in scene.geometry.items():
     print(f"Working with mesh: {name}")
