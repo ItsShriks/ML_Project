@@ -52,7 +52,7 @@ def extract_vertices_from_obj(file_path):
 
 def classify_shape(points, tolerance=0.1):
     """
-    Classify points into a primary shape: sphere, cylinder, or cube.
+    Classify points into primary shapes: sphere, cylinder, or cube.
     """
     # Normalize points
     centroid = np.mean(points, axis=0)
@@ -63,16 +63,22 @@ def classify_shape(points, tolerance=0.1):
     pca.fit(points)
     explained_variance = pca.explained_variance_ratio_
 
-    # Classify based on variance ratios
-    if np.allclose(explained_variance, [1, 0, 0], atol=tolerance):
+    print(f"PCA Explained Variance Ratios: {explained_variance}")
+
+    # Check for elongation along one axis
+    if explained_variance[0] > 0.7 and explained_variance[1] < 0.2 and explained_variance[2] < 0.1:
+        # Check for circular cross-section in the plane of the secondary axes
+        projected_points = points @ pca.components_[1:3].T  # Project onto secondary axes
+        distances = np.linalg.norm(projected_points, axis=1)
+        std_dev = np.std(distances) / np.mean(distances)
+        print(f"Circular Cross-Section Check - Std Dev: {std_dev}")
+        if std_dev < tolerance:
+            return "Cylinder"
         return "Line"
-    elif np.allclose(explained_variance, [0.5, 0.5, 0], atol=tolerance):
-        return "Cylinder"
     elif np.allclose(explained_variance, [1/3, 1/3, 1/3], atol=tolerance):
         return "Sphere"
     else:
         return "Cube/Other"
-
 
 def apply_dbscan_and_classify(points, eps=0.1, min_samples=10, tolerance=0.1):
     """
