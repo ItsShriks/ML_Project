@@ -1,0 +1,8 @@
+Cluster 0: Detected Shape - Cylinder-like (elongated along X)
+Cluster 1: Detected Shape - Cylinder-like (elongated along Z)
+Cluster 2: Detected Shape - Cylinder-like (elongated along Y)
+Cluster 3: Detected Shape - Sphere or Cube
+Grasp Plan 1: Centroid at [ 0.08519437 -0.6971799  -0.16843825]
+Grasp Plan 2: Centroid at [-0.70062766  0.17371759 -0.04030424]
+Grasp Plan 3: Centroid at [0.2378867  0.1164757  0.67224966]
+Grasp Plan 4: Centroid at [ 0.37602128  0.40705684 -0.46329642]
