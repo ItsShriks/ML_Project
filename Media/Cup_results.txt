@@ -1,0 +1,20 @@
+Cluster 0: Detected Shape - Cylinder-like (elongated along Z)
+Cluster 1: Detected Shape - Cylinder-like (elongated along Y)
+Cluster 2: Detected Shape - Cylinder-like (elongated along Z)
+Cluster 3: Detected Shape - Cylinder-like (elongated along Y)
+Cluster 4: Detected Shape - Cylinder-like (elongated along Z)
+Cluster 5: Detected Shape - Cylinder-like (elongated along X)
+Cluster 6: Detected Shape - Cylinder-like (elongated along Z)
+Cluster 7: Detected Shape - Cylinder-like (elongated along Y)
+Cluster 8: Detected Shape - Cylinder-like (elongated along Y)
+Cluster 9: Detected Shape - Cylinder-like (elongated along X)
+Grasp Plan 1: Centroid at [-0.21851411 -0.17278626  0.02316174]
+Grasp Plan 2: Centroid at [0.26082895 0.06617371 0.19170542]
+Grasp Plan 3: Centroid at [-0.30350109  0.30433654  0.0778679 ]
+Grasp Plan 4: Centroid at [ 0.24952164  0.15777308 -0.2136264 ]
+Grasp Plan 5: Centroid at [ 0.26446701 -0.09749895 -0.03322297]
+Grasp Plan 6: Centroid at [ 0.15989639 -0.27784344 -0.00222758]
+Grasp Plan 7: Centroid at [0.22325842 0.35692535 0.04529786]
+Grasp Plan 8: Centroid at [-0.27541025  0.09105972 -0.1756077 ]
+Grasp Plan 9: Centroid at [-0.27067003  0.05021034  0.2104464 ]
+Grasp Plan 10: Centroid at [-0.04398904 -0.31368627 -0.00263658]
